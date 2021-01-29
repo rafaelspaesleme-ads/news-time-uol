@@ -1,0 +1,148 @@
+---
+swagger: "2.0"
+basePath: "/svc/suggest/v1/timestags"
+host: "api.nytimes.com"
+info:
+  version: "1.0.0"
+  title: "TimesTags API"
+  description: "With the TimesTags API, you can mine the riches of the New York Times\
+    \ tag set. The TimesTags service matches your query to the controlled vocabularies\
+    \ that fuel NYTimes.com metadata. You supply a string of characters, and the service\
+    \ returns a ranked list of suggested terms.\n\n**Note:** This API is deprecated.\
+    \ You can get the same data from the [Semantic API](https://developer.nytimes.com/docs/semantic-api-product/1/overview).\
+    \ Just replace `/svc/suggest/v1/timestags` with `/svc/semantic/v2/concept/suggest`.\n\
+    \n```\nhttps://api.nytimes.com/svc/semantic/v2/concept/suggest\n```\n\n**Note:**\
+    \ In this document, curly braces { } indicate required variables. Square\nbrackets\
+    \ [ ] indicate optional parameters or placeholders.\n\n**The TimesTags API at\
+    \ a Glance**\n\n**Base URI**\n\n```\nhttps://api.nytimes.com/svc/suggest/v1/timestags\n\
+    ```\n\n**Scope**\n\nNew York Times tags used to build [Times Topics](https://archive.nytimes.com/www.nytimes.com/pages/topics/index.html)\
+    \ pages, reflecting the expertise of Times indexers since 1851. See [Tags](https://developer.nytimes.com/docs/timestags_api/#h3-tags)\
+    \ for more information on the scope.\n\n**HTTP method**\n\nGET\n\n**Response format**\n\
+    \nJSON (`.json`)\n\nWhy Use TimesTags?\n------------------\n\nThe TimesTags service\
+    \ can help you build a tag set, standardize names of people and organizations,\
+    \ or identify subjects that are currently making news.\nInformation architects\
+    \ and librarians may also wish to compare Times tags to [Library of Congress subject\
+    \ headings](https://authorities.loc.gov/) and other classification systems.\n\n\
+    Additionally, the terms you retrieve with the TimesTags API can be used with the\
+    \ Times Article Search API.\n\nFor general thoughts on the potential of metadata,\
+    \ see the post [Messing Around With Metadata](https://open.blogs.nytimes.com/2007/10/23/messing-around-with-metadata/)\
+    \ on our Open blog. For background information on Times indexing practices, see\
+    \ the article [Dusting Off the Search Engine](https://www.nytimes.com/2001/11/17/opinion/dusting-off-the-search-engine.html).\n\
+    And for more on the power of auto-suggest methods, see [Enriching Search:\nAuto-Suggest\
+    \ in IE8](http://open.blogs.nytimes.com/2008/10/06/enriching-search-auto-suggest-in-ie8/).\n\
+    \nRequests\n--------\n\nTimesTags requests use the following URI structure:\n\n\
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n\
+    https://api.nytimes.com/svc/suggest/v1/timestags?query={search-string}&[optional-param1=value1]&[...]&api-key={your-api-key}\n\
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n\
+    \n\n### TAGS\n\nThe TimesTags API operates on a subset of Times tags: those tags\
+    \ used to create [Times Topics](<https://archive.nytimes.com/www.nytimes.com/pages/topics/index.html>)\
+    \ pages. The subset includes approximately 27,000 tags:\n\n>   `(Des)`: 3,000\
+    \ terms\n>   `(Geo)`: 1,500 terms\n>   `(Org)`: 7,500 terms\n>   `(Per)`: 15,000\
+    \ terms\n\nIn responses, tags are ranked according to how frequently they are\
+    \ used (they are listed in descending order). For example, if your query is *palin*,\
+    \ the most commonly used matching tag is *Palin, Sarah (Per)*. The ranking reflects\
+    \ current usage, so tags will move down the list as their “newsiness” declines.\
+    \ New tags are added regularly.\n\nYour query is matched to the beginning of each\
+    \ word in each tag. For example, `query=son&filter=(Per)` returns all of the following\
+    \ tags:\n\n>   `Sondheim, Stephen`\n>   `Sontag, Susan`\n>   `Bono, Sonny`\n\n\
+    Each tag includes a dictionary abbreviation in parentheses. See the [description\
+    \ of the filter parameter](http://developer.nytimes.com/docs/timestags_api/#h3-optional)\
+    \ for more information about Times dictionaries. The dictionary abbreviations\
+    \ are also used in `<meta>` tags on NYTimes.com.\n\n### FORMAT\n\nThe TimesTags\
+    \ service returns JSON, with a `content-type` of `text/plain`. The JSON response\
+    \ format is ideal for browser auto-suggest applications.\n\n### TIMES STYLE\n\n\
+    The following notes may help you formulate your query:\n\n-   Times tags do not\
+    \ use special characters (accents, diacritics, etc.).\n\n-   Refer to [The New\
+    \ York Times Manual of Style and Usage](https://www.amazon.com/York-Times-Manual-Style-Usage/dp/081296389X)\
+    \ for preferred terms and general style tips.\n\n**Personal Names**\n\nPersonal\
+    \ names are in the format *LastName, FirstName MiddleInitial.* Middle initials\
+    \ and appellations (Jr/Sr) do not include periods.\n\n>   Example: `Albee, Edward\
+    \ (Per)`\n\nExceptions to the standard order for personal names:\n\n-   For names\
+    \ in which the family name precedes the given name (such as Chinese, Korean and\
+    \ Thai names), the order is reversed.\n\n-   For royal names that do not include\
+    \ family names, only the given name is included in the standardized name.\n\n\
+    **Organization Names**\n\nOrganization names that are derived from personal names\
+    \ are in the format *LastName, FirstName*.\n\n>   Example: `Gates, Bill and Melinda,\
+    \ Foundation (Org)`\nCompany names generally use abbreviations such as *Corp*,\
+    \ *Co* and *Inc*, but may vary.\n\n\n\nExamples\n--------\n\nThese examples do\
+    \ not include the required `api-key` parameter. Be sure to include your API key\
+    \ in your request.\n\n### REQUESTS\n\nGet tags based on a few characters, searching\
+    \ all dictionaries:\n\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n\
+    https://api.nytimes.com/svc/suggest/v1/timestags?query=cel\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n\
+    \nGet names of people and organizations:\n\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n\
+    https://api.nytimes.com/svc/suggest/v1/timestags?query=edwards&filter=(Per),(Org)\n\
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n\
+    \nGet tags corresponding to a country, as a geographical unit and as a subject:\n\
+    \n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n\
+    https://api.nytimes.com/svc/suggest/v1/timestags?query=french&filter=(Geo),(Des)\n\
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n\
+    \nGet the top five descriptive terms containing the characters `econ`:\n\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n\
+    https://api.nytimes.com/svc/suggest/v1/timestags?query=econ&filter=(Des)&max=5\n\
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n\
+    \n### RESPONSES\n\nHere is a sample response to the first example given above\
+    \ (`cel`):\n\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n\
+    {\n   \"cel\",[\n      \"Cellular Telephones (Des)\",\n      \"Boston Celtics\
+    \ (Org)\",\n      \"Celebrities (Des)\",\n      \"Stem Cells (Des)\",\n      \"\
+    Celebrex (Drug) (Des)\",\n      \"Sickle Cell Anemia (Des)\",\n      \"Dion, Celine\
+    \ (Per)\",\n      \"Cruz, Celia (Per)\",\n      \"Basements and Cellars (Des)\"\
+    ,\n      \"Cellucci, Paul (Per)\"\n   ]\n}\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n\
+    \nHere is a sample response to the `french` example:\n\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n\
+    {\n   \"french\",[\n      \"France (Geo)\",\n      \"French Open (Tennis) (Des)\"\
+    ,\n      \"French Language (Des)\",\n      \"French Guiana (Geo)\",\n      \"\
+    St Barthelemy (French West Indies) (Geo)\",\n      \"French Alps (Geo)\",\n  \
+    \    \"French Fries (Des)\",\n      \"French Polynesia (France) (Geo)\",\n   \
+    \   \"French Southern Territories (Geo)\"\n   ]\n}\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n\
+    \nHere is a sample response to the `econ` example:\n\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n\
+    {\n   \"econ\",[\n      \"Economic Conditions and Trends (Des)\",\n      \"United\
+    \ States Economy (Des)\",\n      \"Embargoes and Economic Sanctions (Des)\",\n\
+    \      \"Economics (Des)\",\n      \"Economic Stimulus Act of 2008 (Des)\"\n \
+    \  ]\n}\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n"
+schemes:
+- "http"
+- "https"
+produces:
+- "application/json"
+security:
+- apikey: []
+paths:
+  /timestags:
+    get:
+      parameters:
+      - name: "query"
+        in: "query"
+        description: "Your search query"
+        type: "string"
+        required: true
+      - name: "filter"
+        in: "query"
+        description: "If you do not specify a value for filter (see the Optional Parameters),\
+          \ your query will be matched to tags in all four Times dictionaries: subject,\
+          \ geographic location, organization and person. To use more than one, separate\
+          \ with commas.\n"
+        required: false
+        type: "string"
+        enum:
+        - "Des"
+        - "Geo"
+        - "Org"
+        - "Per"
+      - name: "max"
+        in: "query"
+        description: "Sets the maximum number of results"
+        default: 10
+        required: false
+        type: "integer"
+      responses:
+        "200":
+          description: "An array of tags"
+          schema:
+            type: "array"
+            items:
+              type: "array"
+              items:
+                type: "string"
+securityDefinitions:
+  apikey:
+    type: "apiKey"
+    name: "api-key"
+    in: "query"
