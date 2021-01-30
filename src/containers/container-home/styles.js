@@ -4,7 +4,7 @@ import {Colors} from "../../assets/styles/js/colors";
 export const useStyles = makeStyles((theme) => ({
     home: {
         width: '100%',
-        marginTop: 30,
+        marginTop: 150,
         marginBottom: 30,
         backgroundColor: `${Colors.white}`,
         padding: 20,
