@@ -51,7 +51,8 @@ export const useStyles = makeStyles((theme) => ({
             opacity: 0.8,
             transition: '0.4s',
         },
-        width: '50%'
+        width: '50%',
+        height: '100%'
     },
     labelRight: {
         float: 'right',
@@ -61,11 +62,12 @@ export const useStyles = makeStyles((theme) => ({
         paddingRight: 10,
         transition: '0.4s',
         '&:hover': {
-            backgroundColor: Colors.darkGrayOpac,
+            backgroundColor: `${Colors.darkGrayOpac}`,
             opacity: 0.8,
             transition: '0.4s'
         },
-        width: '50%'
+        width: '50%',
+        height: '100%'
     },
     span: {
         display: 'grid',

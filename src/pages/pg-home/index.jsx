@@ -3,6 +3,7 @@ import ContainerHome from "../../containers/container-home";
 import {handleCovidFindGlobal} from "../../services/objects/Covid";
 import {handleTNYTFindByScience, handleTNYTFindByTech} from "../../services/objects/NTimes";
 import UolHeader from "../../components/uol-header";
+import UolFooter from "../../components/uol-footer";
 
 export const Home = () => {
     const [casesTotalCovid, setCasesTotalCovid] = useState(0);
@@ -11,6 +12,7 @@ export const Home = () => {
     const [casesRecoveredCovid, setCasesRecoveredCovid] = useState(0);
     const [countNewsTech, setCountNewsTech] = useState(0);
     const [countNewsScience, setCountNewsScience] = useState(0);
+    const [copyright, setCopyright] = useState('');
 
     useEffect(() => {
         handleResultCovid();
@@ -31,14 +33,16 @@ export const Home = () => {
     const handleCountNewsTechNtymes = () => {
         handleTNYTFindByTech()
             .then(response => {
-                setCountNewsTech(response && response.num_results)
+                setCountNewsTech(response && response.num_results);
             })
     }
 
     const handleCountNewsScienceNtymes = () => {
         handleTNYTFindByScience()
             .then(response => {
-                setCountNewsScience(response.num_results)
+                console.log(response);
+                setCopyright(response.copyright);
+                setCountNewsScience(response.num_results);
             })
     }
 
@@ -52,7 +56,10 @@ export const Home = () => {
                 casesDeathCovid={casesDeathCovid}
                 casesRecoveredCovid={casesRecoveredCovid}
             />
-            <ContainerHome/>
+            <ContainerHome
+                copyright={copyright}
+            />
+            <UolFooter />
         </>
     );
 }

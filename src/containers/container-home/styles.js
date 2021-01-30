@@ -13,30 +13,43 @@ export const useStyles = makeStyles((theme) => ({
     },
     rowTop: {
         width: '100%',
-        marginBottom: 10
+        marginBottom: 30,
+        paddingBottom: 30,
+        borderBottom: `1px solid ${Colors.black}`
     },
     rowCenter: {
         width: '100%',
         height: '100%'
     },
     rowBottom: {
-        marginTop: 10,
+        marginTop: 30,
+        paddingTop: 30,
         width: '100%',
+        borderTop: `1px solid ${Colors.black}`,
+        '& label': {
+            color: Colors.gray
+        },
+        '& span': {
+            color: Colors.grayLight2
+        },
+        fontSize: 14
     },
     columnLeft: {
-        width: '15%',
+        width: '25%',
         float: 'left',
-        height: '100%'
+        height: '100%',
+        borderRight: `1px solid ${Colors.black}`
     },
     columnCenter: {
-        width: '70%',
+        width: '50%',
         float: 'left',
-        height: '100%'
+        height: '100%',
     },
     columnRight: {
-        width: '15%',
+        width: '25%',
         float: 'left',
-        height: '100%'
+        height: '100%',
+        borderLeft: `1px solid ${Colors.black}`
     }
 }));
 
