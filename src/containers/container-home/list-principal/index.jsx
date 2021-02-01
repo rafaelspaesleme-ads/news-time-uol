@@ -57,7 +57,7 @@ export const ListPrincipalHome = ({list, typeList, screen}) => {
 ListPrincipalHome.propTypes = {
     list: PropTypes.array,
     typeList: PropTypes.oneOf(['tech', 'science']),
-    screen: PropTypes.oneOf(['desktop', 'mobile', 'tablet'])
+    screen: PropTypes.oneOf(['desktop', 'smartphone', 'tablet'])
 };
 
 ListPrincipalHome.defaultProps = {

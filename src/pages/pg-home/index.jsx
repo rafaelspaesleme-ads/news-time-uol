@@ -11,8 +11,14 @@ import {
 import UolHeader from "../../components/uol-header";
 import UolFooter from "../../components/uol-footer";
 import {ConvertDesktopInMobile} from "../../utils/functions/Convertions";
+import Fab from "@material-ui/core/Fab";
+import NotificationImportantIcon from '@material-ui/icons/NotificationImportant';
+import useStyles from "./styles";
+import {Box} from "@material-ui/core";
 
 export const Home = () => {
+    const classes = useStyles();
+
     const [casesTotalCovid, setCasesTotalCovid] = useState(0);
     const [casesNewsCovid, setCasesNewsCovid] = useState(0);
     const [casesDeathCovid, setCasesDeathCovid] = useState(0);
@@ -29,6 +35,7 @@ export const Home = () => {
     const [sports, setSports] = useState([]);
     const [politics, setPolitics] = useState([]);
     const [screen, setScreen] = useState(null);
+    const [actionCovid, setActionCovid] = useState(false);
 
     useEffect(() => {
         handleResultCovid();
@@ -119,6 +126,38 @@ export const Home = () => {
             })
     }
 
+    const AlertCovidMobile = () => {
+
+        return (
+            <div className={classes.alert}>
+                <div className={classes.box} style={!actionCovid ? {display: 'none'} : null}>
+                    <div>
+                        <label>Total de casos:</label>
+                        <span>{casesTotalCovid || 0}</span>
+                    </div>
+                    <div>
+                        <label>Novos casos:</label>
+                        <span>{casesNewsCovid || 0}</span>
+                    </div>
+                    <div>
+                        <label>Mortes:</label>
+                        <span>{casesDeathCovid || 0}</span>
+                    </div>
+                    <div className={classes.casesRecovered}>
+                        <label>Recuperações:</label>
+                        <span>{casesRecoveredCovid || 0}</span>
+                    </div>
+                </div>
+                <div className={classes.floatingBtn}>
+                    <Fab onClick={() => setActionCovid(!actionCovid)} color="secondary" variant="extended">
+                        <NotificationImportantIcon className={classes.extendedIcon}/>
+                        {actionCovid ? (<label>Alerta de Covid</label>) : null}
+                    </Fab>
+                </div>
+            </div>
+        )
+    }
+
     return (
         <>
             <UolHeader
@@ -142,8 +181,10 @@ export const Home = () => {
                 sports={sports}
                 techs={techs}
                 worlds={worlds}
+                screen={screen}
             />
-            <UolFooter />
+            {screen !== "desktop" ? <AlertCovidMobile/> : ''}
+            <UolFooter/>
         </>
     );
 }
