@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react";
 import useStyles from "./styles";
-import {ConvertDateNowInPtBrCustom} from "../../utils/functions/Convertions";
+import {ConvertDateNowInPtBrCustom, ConvertDesktopInMobile} from "../../utils/functions/Convertions";
 import {Colors} from "../../assets/styles/js/colors";
 import * as PropTypes from "prop-types";
 
@@ -12,7 +12,8 @@ export const UolHeader = ({
                               casesTotalCovid,
                               casesNewsCovid,
                               casesDeathCovid,
-                              casesRecoveredCovid
+                              casesRecoveredCovid,
+                              screen
                           }) => {
 
     const classes = useStyles();
@@ -22,8 +23,9 @@ export const UolHeader = ({
         setTimeout(() => setStateResultNews(!stateResultNews), 5000)
     }, [stateResultNews]);
 
-    return (
-        <header>
+    const ViewDesktopLeft = () => {
+
+        return (
             <div className={classes.columnLeft}>
                 <strong>
                     {ConvertDateNowInPtBrCustom()}
@@ -42,30 +44,43 @@ export const UolHeader = ({
                         )
                 }
             </div>
-            <div className={classes.columnCenter}>
-                <div className={classes.columnCenter.rowTop}>
-                    <h1>News Time - UOL</h1>
-                </div>
-                <div className={classes.columnCenter.rowBottom}>
-                    <label onClick={onClickTech} className={classes.labelLeft}>Tech</label>
-                    <label onClick={onClickScience} className={classes.labelRight}>Science</label>
-                </div>
-            </div>
+        )
+    }
+
+    const ViewDesktopRight = () => {
+
+        return (
             <div className={classes.columnRight}>
                 <strong>Alerta de Coronavirus no Mundo</strong>
                 <span className={classes.span}>
                     <span><strong>Total de casos:</strong> <label
                         style={{color: Colors.red}}>{casesTotalCovid}</label></span>
-                    <span><strong>Novos casos:</strong> <label style={{color: Colors.red}}>{casesNewsCovid}</label></span>
+                    <span><strong>Novos casos:</strong> <label
+                        style={{color: Colors.red}}>{casesNewsCovid}</label></span>
                     <span><strong>Mortos:</strong> <label style={{color: Colors.red}}>{casesDeathCovid}</label></span>
                     <span><strong>Recuperados:</strong> <label
                         style={{color: Colors.green}}>{casesRecoveredCovid}</label></span>
                 </span>
             </div>
+        )
+    }
+
+    return (
+        <header>
+            {screen === "desktop" ? <ViewDesktopLeft/> : ""}
+            <div className={screen === "desktop" ? classes.columnCenter : classes.columnCenterMobile}>
+                <div className={screen === "desktop" ? classes.rowTop : classes.rowTopMobile}>
+                    <h1>News Time - UOL</h1>
+                </div>
+                <div className={screen === "desktop" ? classes.rowBottom : classes.rowBottomMobile}>
+                    <label onClick={onClickTech} className={classes.labelLeft}>Tech</label>
+                    <label onClick={onClickScience} className={classes.labelRight}>Science</label>
+                </div>
+            </div>
+            {screen === "desktop" ? <ViewDesktopRight /> : ""}
         </header>
     );
 }
-
 
 
 UolHeader.propTypes = {
@@ -77,6 +92,7 @@ UolHeader.propTypes = {
     casesNewsCovid: PropTypes.number,
     casesDeathCovid: PropTypes.number,
     casesRecoveredCovid: PropTypes.number,
+    screen: PropTypes.oneOf(["desktop", "smartphone", "tablet"])
 };
 
 UolHeader.defaultProps = {
@@ -87,7 +103,8 @@ UolHeader.defaultProps = {
     casesTotalCovid: 0,
     casesNewsCovid: 0,
     casesDeathCovid: 0,
-    casesRecoveredCovid: 0
+    casesRecoveredCovid: 0,
+    screen: ConvertDesktopInMobile()
 };
 
 export default UolHeader;

@@ -27,6 +27,30 @@ export const useStyles = makeStyles((theme) => ({
             width: '100%',
         }
     },
+    columnCenterMobile: {
+        float: 'left',
+        width: '60%',
+        textAlign: 'center',
+        height: '100%',
+        display: 'contents',
+    },
+    rowTop: {
+        width: '100%',
+    },
+    rowBottom: {
+        width: '100%',
+    },
+    rowTopMobile: {
+        width: '100%',
+    },
+    rowBottomMobile: {
+        width: '100%',
+        marginTop: 5,
+        '& label': {
+            paddingTop: 10,
+            paddingBottom: 10
+        }
+    },
     columnRight: {
         float: 'left',
         width: '20%',

@@ -28,3 +28,36 @@ export function ConvertDateNowInPtBrCustom() {
 
     return `${weekNow === "Sextou!" ? `Hoje é... ${weekNow}` : `Hoje é, ${weekNow},`}\n ${dateNow.getDay()} de ${monthNow} de ${dateNow.getFullYear()}`;
 }
+
+export function ConvertDesktopInMobile() {
+    let width = window.innerWidth;
+
+    if (width < 501) {
+        return "smartphone";
+    } else if (width > 500 && width < 801) {
+        return "tablet";
+    } else {
+        return "desktop"
+    }
+}
+
+export function ConvertDateEngByPtBr(date) {
+    let dateEng = new Date(date);
+
+    let monthArr = new Array(12);
+    monthArr[0] = "janeiro";
+    monthArr[1] = "fevereiro";
+    monthArr[2] = "março";
+    monthArr[3] = "abril";
+    monthArr[4] = "maio";
+    monthArr[5] = "junho";
+    monthArr[6] = "julho";
+    monthArr[7] = "agosto";
+    monthArr[8] = "setembro";
+    monthArr[9] = "outubro";
+    monthArr[10] = "novembro";
+    monthArr[11] = "dezembro";
+    let monthPtbr = monthArr[dateEng.getMonth()];
+
+    return `${dateEng.getDate()} de ${monthPtbr} de ${dateEng.getFullYear()}`
+}

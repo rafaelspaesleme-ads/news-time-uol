@@ -9,51 +9,75 @@ import BrushIcon from '@material-ui/icons/Brush';
 import PublicIcon from '@material-ui/icons/Public';
 import SportsHandballIcon from '@material-ui/icons/SportsHandball';
 import * as PropTypes from "prop-types";
+import {ConvertDesktopInMobile} from "../../utils/functions/Convertions";
 
-export const ContainerHome = ({copyright, typePrincipal, dailies, politics, arts, sports, techs, sciences, worlds}) => {
+export const ContainerHome = ({copyright, typePrincipal, dailies, politics, arts, sports, techs, sciences, worlds, screen}) => {
     const classes = useStyles();
+
+    const ViewDesktopLeft = () => {
+
+        return (
+            <div className={classes.columnLeft}>
+                <ListSecondaryHome
+                    title="Política"
+                    list={politics}
+                    icon={<ApartmentIcon/>}
+                    multipleList={true}
+                />
+                <ListSecondaryHome
+                    title="Artes"
+                    list={arts}
+                    icon={<BrushIcon/>}
+                    multipleList={true}
+                />
+                <ListSecondaryHome
+                    title="Esprotes"
+                    list={sports}
+                    icon={<SportsHandballIcon/>}
+                    multipleList={true}
+                />
+            </div>
+        )
+    }
+
+    const ViewDesktopRight = () => {
+
+        return (
+            <div className={classes.columnRight}>
+                <ListSecondaryHome
+                    title="Mundo"
+                    list={worlds}
+                    icon={<PublicIcon/>}
+                />
+            </div>
+        )
+    }
+
+    const ViewmarqueeDesktop = () => {
+
+        return (
+            <div className={screen === "desktop" ? classes.rowTop : classes.rowTopMobile}>
+                <UolMarquee
+                    info={dailies}
+                />
+            </div>
+        )
+    }
+
     return (
-        <Container>
-            <div className={classes.home}>
-                <div className={classes.rowTop}>
-                    <UolMarquee
-                        info={dailies}
-                    />
-                </div>
+        <Container className={screen !== "desktop" ? classes.root : null}>
+            {screen !== "desktop" ? <ViewmarqueeDesktop/> : ''}
+            <div className={screen === "desktop" ? classes.home : classes.homeMobile}>
+                {screen === "desktop" ? <ViewmarqueeDesktop/> : ''}
                 <div className={classes.rowCenter}>
-                    <div className={classes.columnLeft}>
-                        <ListSecondaryHome
-                            title="Política"
-                            list={politics}
-                            icon={<ApartmentIcon />}
-                            multipleList={true}
-                        />
-                        <ListSecondaryHome
-                            title="Artes"
-                            list={arts}
-                            icon={<BrushIcon/>}
-                            multipleList={true}
-                        />
-                        <ListSecondaryHome
-                            title="Esprotes"
-                            list={sports}
-                            icon={<SportsHandballIcon/>}
-                            multipleList={true}
-                        />
-                    </div>
-                    <div className={classes.columnCenter}>
+                    {screen === "desktop" ? <ViewDesktopLeft/> : ''}
+                    <div className={screen === "desktop" ? classes.columnCenter : classes.columnCenterMobile}>
                         <ListPrincipalHome
                             list={typePrincipal === "tech" ? techs : sciences}
                             typeList={typePrincipal}
                         />
                     </div>
-                    <div className={classes.columnRight}>
-                        <ListSecondaryHome
-                            title="Mundo"
-                            list={worlds}
-                            icon={<PublicIcon/>}
-                        />
-                    </div>
+                    {screen === "desktop" ? <ViewDesktopRight/> : ''}
                 </div>
                 <div className={classes.rowBottom}>
                     <label>Direitos & Fonte:</label> <span>{copyright}</span>
@@ -65,14 +89,15 @@ export const ContainerHome = ({copyright, typePrincipal, dailies, politics, arts
 
 ContainerHome.propTypes = {
     copyright: PropTypes.string,
-    typePrincipal: PropTypes.oneOf(['tech','science']),
+    typePrincipal: PropTypes.oneOf(['tech', 'science']),
     dailies: PropTypes.array,
     politics: PropTypes.array,
     arts: PropTypes.array,
     sports: PropTypes.array,
     techs: PropTypes.array,
     sciences: PropTypes.array,
-    worlds: PropTypes.array
+    worlds: PropTypes.array,
+    screen: PropTypes.oneOf(["desktop", "smartphone", "tablet"])
 };
 
 ContainerHome.defaultProps = {
@@ -84,7 +109,8 @@ ContainerHome.defaultProps = {
     sports: [],
     techs: [],
     sciences: [],
-    worlds: []
+    worlds: [],
+    screen: ConvertDesktopInMobile()
 };
 
 export default ContainerHome;

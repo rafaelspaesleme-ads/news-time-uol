@@ -10,6 +10,7 @@ import {
 } from "../../services/objects/NTimes";
 import UolHeader from "../../components/uol-header";
 import UolFooter from "../../components/uol-footer";
+import {ConvertDesktopInMobile} from "../../utils/functions/Convertions";
 
 export const Home = () => {
     const [casesTotalCovid, setCasesTotalCovid] = useState(0);
@@ -27,6 +28,7 @@ export const Home = () => {
     const [arts, setArts] = useState([]);
     const [sports, setSports] = useState([]);
     const [politics, setPolitics] = useState([]);
+    const [screen, setScreen] = useState(null);
 
     useEffect(() => {
         handleResultCovid();
@@ -39,6 +41,8 @@ export const Home = () => {
         handleArts();
         handleSports();
         handlePolitics();
+        console.log(ConvertDesktopInMobile());
+        setScreen(ConvertDesktopInMobile());
     }, []);
 
     const handleResultCovid = () => {
@@ -126,6 +130,7 @@ export const Home = () => {
                 casesRecoveredCovid={casesRecoveredCovid}
                 onClickScience={() => setActivePrincipal("science")}
                 onClickTech={() => setActivePrincipal("tech")}
+                screen={screen}
             />
             <ContainerHome
                 copyright={copyright}

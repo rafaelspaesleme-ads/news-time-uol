@@ -26,7 +26,7 @@ export const UolContentModal = ({image, title, author, tags, description, url}) 
                     <div className={classes.areaTags}>
                         {
                             tags && tags.map((value, index) => (
-                                <span onClick={() => window.open(`https://www.google.com/search?q=${value}`)}
+                                <span onClick={() => window.open(`https://www.google.com/search?q=${value}`, '_blank')}
                                       key={index}>{value.split(' ')[0]}</span>
                             ))
                         }

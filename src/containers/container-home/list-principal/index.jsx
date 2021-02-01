@@ -5,8 +5,10 @@ import useStyles from "./styles";
 import UolCardPrincipal from "../../../components/uol-card-principal";
 import ImportantDevicesIcon from '@material-ui/icons/ImportantDevices';
 import EmojiObjectsIcon from '@material-ui/icons/EmojiObjects';
+import {ConvertDesktopInMobile} from "../../../utils/functions/Convertions";
+import UolCardMobile from "../../../components/uol-card-mobile";
 
-export const ListPrincipalHome = ({list, typeList}) => {
+export const ListPrincipalHome = ({list, typeList, screen}) => {
     const classes = useStyles();
 
     return (
@@ -34,10 +36,7 @@ export const ListPrincipalHome = ({list, typeList}) => {
                         list.length > 0 ?
                             list.map((value, index) => (
                                 <div key={index}>
-                                    <UolCardPrincipal
-                                        key={index}
-                                        value={value}
-                                    />
+                                    {screen === "desktop" ? <UolCardPrincipal value={value} /> : <UolCardMobile value={value} />}
                                     <Divider/>
                                 </div>
                             ))
@@ -57,12 +56,14 @@ export const ListPrincipalHome = ({list, typeList}) => {
 
 ListPrincipalHome.propTypes = {
     list: PropTypes.array,
-    typeList: PropTypes.oneOf(['tech', 'science'])
+    typeList: PropTypes.oneOf(['tech', 'science']),
+    screen: PropTypes.oneOf(['desktop', 'mobile', 'tablet'])
 };
 
 ListPrincipalHome.defaultProps = {
     list: [],
-    typeList: 'tech'
+    typeList: 'tech',
+    screen: ConvertDesktopInMobile()
 };
 
 export default ListPrincipalHome;
