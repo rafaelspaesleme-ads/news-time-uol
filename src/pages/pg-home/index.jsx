@@ -1,7 +1,13 @@
 import React, {useEffect, useState} from "react";
 import ContainerHome from "../../containers/container-home";
 import {handleCovidFindGlobal} from "../../services/objects/Covid";
-import {handleTNYTFindByScience, handleTNYTFindByTech} from "../../services/objects/NTimes";
+import {
+    handleTNYTFindByArts,
+    handleTNYTFindByDaily, handleTNYTFindByPolitics,
+    handleTNYTFindByScience, handleTNYTFindBySports,
+    handleTNYTFindByTech,
+    handleTNYTFindByWorld
+} from "../../services/objects/NTimes";
 import UolHeader from "../../components/uol-header";
 import UolFooter from "../../components/uol-footer";
 
@@ -13,11 +19,26 @@ export const Home = () => {
     const [countNewsTech, setCountNewsTech] = useState(0);
     const [countNewsScience, setCountNewsScience] = useState(0);
     const [copyright, setCopyright] = useState('');
+    const [activePrincipal, setActivePrincipal] = useState('tech');
+    const [sciences, setSciences] = useState([]);
+    const [techs, setTechs] = useState([]);
+    const [dailies, setDailies] = useState([]);
+    const [worlds, setWorlds] = useState([]);
+    const [arts, setArts] = useState([]);
+    const [sports, setSports] = useState([]);
+    const [politics, setPolitics] = useState([]);
 
     useEffect(() => {
         handleResultCovid();
         handleCountNewsTechNtymes();
         handleCountNewsScienceNtymes();
+        handleScience();
+        handleTech();
+        handleDaily();
+        handleWorld();
+        handleArts();
+        handleSports();
+        handlePolitics();
     }, []);
 
     const handleResultCovid = () => {
@@ -40,9 +61,57 @@ export const Home = () => {
     const handleCountNewsScienceNtymes = () => {
         handleTNYTFindByScience()
             .then(response => {
-                console.log(response);
-                setCopyright(response.copyright);
-                setCountNewsScience(response.num_results);
+                setCopyright(response && response.copyright);
+                setCountNewsScience(response && response.num_results);
+            })
+    }
+
+    const handleScience = () => {
+        handleTNYTFindByScience()
+            .then(response => {
+                setSciences(response && response.results);
+            })
+    }
+
+    const handleTech = () => {
+        handleTNYTFindByTech()
+            .then(response => {
+                setTechs(response && response.results);
+            })
+    }
+
+    const handleDaily = () => {
+        handleTNYTFindByDaily()
+            .then(response => {
+                setDailies(response && response.results.splice(0, 7));
+            })
+    }
+
+    const handleWorld = () => {
+        handleTNYTFindByWorld()
+            .then(response => {
+                setWorlds(response && response.results);
+            })
+    }
+
+    const handleArts = () => {
+        handleTNYTFindByArts()
+            .then(response => {
+                setArts(response && response.results);
+            })
+    }
+
+    const handleSports = () => {
+        handleTNYTFindBySports()
+            .then(response => {
+                setSports(response && response.results);
+            })
+    }
+
+    const handlePolitics = () => {
+        handleTNYTFindByPolitics()
+            .then(response => {
+                setPolitics(response && response.results);
             })
     }
 
@@ -55,9 +124,19 @@ export const Home = () => {
                 casesNewsCovid={casesNewsCovid}
                 casesDeathCovid={casesDeathCovid}
                 casesRecoveredCovid={casesRecoveredCovid}
+                onClickScience={() => setActivePrincipal("science")}
+                onClickTech={() => setActivePrincipal("tech")}
             />
             <ContainerHome
                 copyright={copyright}
+                typePrincipal={activePrincipal}
+                arts={arts}
+                dailies={dailies}
+                politics={politics}
+                sciences={sciences}
+                sports={sports}
+                techs={techs}
+                worlds={worlds}
             />
             <UolFooter />
         </>

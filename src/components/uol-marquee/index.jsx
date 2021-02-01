@@ -7,47 +7,42 @@ export const UolMarquee = ({info, sequencyRandom}) => {
     const classes = useStyles();
 
     return (
-        <>
-            <div className={classes.marquee}>
-                <Marquee
-                    Size={'h5'}
-                    NumberOfOptions={info.count}
-                    Index0={info.data[0].value}
-                    Index1={info.data[1].value}
-                    Index2={info.data[2].value}
-                    Index3={info.data[3].value}
-                    Index4={info.data[4].value}
-                    Index5={info.data[5].value}
-                    Index6={info.data[6].value}
-                    TimeToCross={'10000'}
-                    TimeToChange={'2000'}
-                    IsRandom={sequencyRandom}
-                    Color={'yellow'}
-                />
-            </div>
+        <>{
+            info.length > 0
+                ? (
+                    <div className={classes.marquee}>
+                        {console.log('info', info)}
+                        <Marquee
+                            Size={'h5'}
+                            NumberOfOptions={info.length}
+                            Index0={info[0].title}
+                            Index1={info[1].title}
+                            Index2={info[2].title}
+                            Index3={info[3].title}
+                            Index4={info[4].title}
+                            Index5={info[5].title}
+                            Index6={info[6].title}
+                            TimeToCross={'10000'}
+                            TimeToChange={'2000'}
+                            IsRandom={sequencyRandom}
+                            Color={'yellow'}
+                        />
+                    </div>
+                )
+                : ('')
+        }
         </>
     );
 }
 
 
 UolMarquee.propTypes = {
-    info: PropTypes.object,
+    info: PropTypes.array,
     sequencyRandom: PropTypes.bool
 };
 
 UolMarquee.defaultProps = {
-    info: {
-        count: 7,
-        data: [
-            {value: 'Não'},
-            {value: 'há'},
-            {value: 'noticias'},
-            {value: 'do'},
-            {value: 'dia'},
-            {value: 'no'},
-            {value: 'momento...'}
-        ]
-    },
+    info: [],
     sequencyRandom: false
 };
 

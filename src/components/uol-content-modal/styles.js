@@ -45,6 +45,7 @@ export const useStyles = makeStyles((theme) => ({
         '& span': {
             backgroundColor: Colors.purple,
             marginRight: 10,
+            marginBottom: 10,
             padding: 5,
             color: Colors.white,
             WebkitBoxShadow: "1px 1px 3px 0px rgba(0,0,0,0.44)",
@@ -52,6 +53,7 @@ export const useStyles = makeStyles((theme) => ({
             boxShadow: "1px 1px 3px 0px rgba(0,0,0,0.44)",
             cursor: 'pointer',
             transition: '0.2s',
+            display: 'inline-grid',
             '&:hover': {
                 transition: '0.2s',
                 backgroundColor: Colors.purpleLight,

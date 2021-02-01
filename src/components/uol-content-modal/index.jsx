@@ -8,7 +8,7 @@ export const UolContentModal = ({image, title, author, tags, description, url}) 
     const classes = useStyles();
 
     return (
-        <Box component="center">
+        <Box>
             <div className={classes.modal}>
                 <div className={classes.rowTop}>
                     <div className={classes.columnLeft}>
@@ -26,7 +26,8 @@ export const UolContentModal = ({image, title, author, tags, description, url}) 
                     <div className={classes.areaTags}>
                         {
                             tags && tags.map((value, index) => (
-                                <span onClick={() => window.open(`https://www.google.com/search?q=${value}`)} key={index}>{value}</span>
+                                <span onClick={() => window.open(`https://www.google.com/search?q=${value}`)}
+                                      key={index}>{value.split(' ')[0]}</span>
                             ))
                         }
                     </div>
