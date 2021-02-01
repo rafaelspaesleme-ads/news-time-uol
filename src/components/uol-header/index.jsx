@@ -73,8 +73,8 @@ export const UolHeader = ({
                     <h1>News Time - UOL</h1>
                 </div>
                 <div className={screen === "desktop" ? classes.rowBottom : classes.rowBottomMobile}>
-                    <label onClick={onClickTech} className={classes.labelLeft}>Tech</label>
-                    <label onClick={onClickScience} className={classes.labelRight}>Science</label>
+                    <label onClick={onClickTech} className={classes.labelLeft}>Tecnologia</label>
+                    <label onClick={onClickScience} className={classes.labelRight}>Ciências</label>
                 </div>
             </div>
             {screen === "desktop" ? <ViewDesktopRight /> : ""}

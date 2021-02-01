@@ -34,14 +34,6 @@ export const handleTNYTFindByDaily = async () => await apiTimes.get(ENDPOINTS_TN
         console.log(reason.toLocaleString());
     });
 
-export const handleTNYTFindByArts = async () => await apiTimes.get(ENDPOINTS_TNYT.ARTS(getToken()))
-    .then(response => {
-        return response.data;
-    })
-    .catch(reason => {
-        console.log(reason.toLocaleString());
-    });
-
 export const handleTNYTFindBySports = async () => await apiTimes.get(ENDPOINTS_TNYT.SPORTS(getToken()))
     .then(response => {
         return response.data;

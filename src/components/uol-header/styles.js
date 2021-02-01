@@ -70,6 +70,7 @@ export const useStyles = makeStyles((theme) => ({
         paddingLeft: 10,
         paddingRight: 10,
         transition: '0.4s',
+        paddingTop: 5,
         '&:hover': {
             backgroundColor: Colors.darkGrayOpac,
             opacity: 0.8,
@@ -85,6 +86,7 @@ export const useStyles = makeStyles((theme) => ({
         paddingLeft: 10,
         paddingRight: 10,
         transition: '0.4s',
+        paddingTop: 5,
         '&:hover': {
             backgroundColor: `${Colors.darkGrayOpac}`,
             opacity: 0.8,

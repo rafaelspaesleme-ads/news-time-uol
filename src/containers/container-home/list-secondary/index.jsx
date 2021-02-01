@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import {Box, Container, Divider, IconButton} from "@material-ui/core";
+import {Box, Container, Divider} from "@material-ui/core";
 import useStyles from "./styles";
 import * as PropTypes from "prop-types";
 import BlurOnIcon from '@material-ui/icons/BlurOn';

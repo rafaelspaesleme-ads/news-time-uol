@@ -5,13 +5,12 @@ import UolMarquee from "../../components/uol-marquee";
 import ListPrincipalHome from "./list-principal";
 import ListSecondaryHome from "./list-secondary";
 import ApartmentIcon from '@material-ui/icons/Apartment';
-import BrushIcon from '@material-ui/icons/Brush';
 import PublicIcon from '@material-ui/icons/Public';
 import SportsHandballIcon from '@material-ui/icons/SportsHandball';
 import * as PropTypes from "prop-types";
 import {ConvertDesktopInMobile} from "../../utils/functions/Convertions";
 
-export const ContainerHome = ({copyright, typePrincipal, dailies, politics, arts, sports, techs, sciences, worlds, screen}) => {
+export const ContainerHome = ({copyright, typePrincipal, dailies, politics, sports, techs, sciences, worlds, screen}) => {
     const classes = useStyles();
 
     const ViewDesktopLeft = () => {
@@ -25,13 +24,7 @@ export const ContainerHome = ({copyright, typePrincipal, dailies, politics, arts
                     multipleList={true}
                 />
                 <ListSecondaryHome
-                    title="Artes"
-                    list={arts}
-                    icon={<BrushIcon/>}
-                    multipleList={true}
-                />
-                <ListSecondaryHome
-                    title="Esprotes"
+                    title="Esportes"
                     list={sports}
                     icon={<SportsHandballIcon/>}
                     multipleList={true}
@@ -92,7 +85,6 @@ ContainerHome.propTypes = {
     typePrincipal: PropTypes.oneOf(['tech', 'science']),
     dailies: PropTypes.array,
     politics: PropTypes.array,
-    arts: PropTypes.array,
     sports: PropTypes.array,
     techs: PropTypes.array,
     sciences: PropTypes.array,
@@ -105,7 +97,6 @@ ContainerHome.defaultProps = {
     typePrincipal: 'tech',
     dailies: [],
     politics: [],
-    arts: [],
     sports: [],
     techs: [],
     sciences: [],

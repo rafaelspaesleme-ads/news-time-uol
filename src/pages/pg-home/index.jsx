@@ -2,7 +2,6 @@ import React, {useEffect, useState} from "react";
 import ContainerHome from "../../containers/container-home";
 import {handleCovidFindGlobal} from "../../services/objects/Covid";
 import {
-    handleTNYTFindByArts,
     handleTNYTFindByDaily, handleTNYTFindByPolitics,
     handleTNYTFindByScience, handleTNYTFindBySports,
     handleTNYTFindByTech,
@@ -14,7 +13,6 @@ import {ConvertDesktopInMobile} from "../../utils/functions/Convertions";
 import Fab from "@material-ui/core/Fab";
 import NotificationImportantIcon from '@material-ui/icons/NotificationImportant';
 import useStyles from "./styles";
-import {Box} from "@material-ui/core";
 
 export const Home = () => {
     const classes = useStyles();
@@ -31,7 +29,6 @@ export const Home = () => {
     const [techs, setTechs] = useState([]);
     const [dailies, setDailies] = useState([]);
     const [worlds, setWorlds] = useState([]);
-    const [arts, setArts] = useState([]);
     const [sports, setSports] = useState([]);
     const [politics, setPolitics] = useState([]);
     const [screen, setScreen] = useState(null);
@@ -45,7 +42,6 @@ export const Home = () => {
         handleTech();
         handleDaily();
         handleWorld();
-        handleArts();
         handleSports();
         handlePolitics();
         console.log(ConvertDesktopInMobile());
@@ -105,13 +101,6 @@ export const Home = () => {
             })
     }
 
-    const handleArts = () => {
-        handleTNYTFindByArts()
-            .then(response => {
-                setArts(response && response.results);
-            })
-    }
-
     const handleSports = () => {
         handleTNYTFindBySports()
             .then(response => {
@@ -129,7 +118,7 @@ export const Home = () => {
     const AlertCovidMobile = () => {
 
         return (
-            <div className={classes.alert}>
+            <div style={casesTotalCovid > 0 ? null : {display: 'none'}} className={classes.alert}>
                 <div className={classes.box} style={!actionCovid ? {display: 'none'} : null}>
                     <div>
                         <label>Total de casos:</label>
@@ -174,7 +163,6 @@ export const Home = () => {
             <ContainerHome
                 copyright={copyright}
                 typePrincipal={activePrincipal}
-                arts={arts}
                 dailies={dailies}
                 politics={politics}
                 sciences={sciences}
