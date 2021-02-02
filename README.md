@@ -18,6 +18,7 @@ Portal para exibição de noticias do Jornal The New York Times.
 
 - <a href='https://developer.nytimes.com/' >Api NyTimes Developer</a>
 - <a href='https://documenter.getpostman.com/view/10808728/SzS8rjbc'>Api Covid 19</a>
+    - Existe um limite de uso desta requisição por quantidade de vezes que é chamada.
 
 ## Componentes criados
 
