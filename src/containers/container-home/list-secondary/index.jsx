@@ -82,7 +82,7 @@ ListSecondaryHome.propTypes = {
 ListSecondaryHome.defaultProps = {
     icon: <BlurOnIcon/>,
     list: [],
-    title: 'Sem titulo',
+    title: 'Untitled',
     multipleList: false
 };
 

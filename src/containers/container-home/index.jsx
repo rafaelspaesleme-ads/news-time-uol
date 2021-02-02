@@ -93,7 +93,7 @@ ContainerHome.propTypes = {
 };
 
 ContainerHome.defaultProps = {
-    copyright: 'https://github.com/rafaelspaesleme-ads',
+    copyright: '',
     typePrincipal: 'tech',
     dailies: [],
     politics: [],
