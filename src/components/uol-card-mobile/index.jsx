@@ -27,10 +27,7 @@ export const UolCardMobile = ({value}) => {
     return (
         <Card className={classes.card}>
             <CardHeader
-                avatar={
-                    <Avatar aria-label="recipe" src={value.multimedia && value.multimedia[1].url}
-                            className={classes.avatar}/>
-                }
+                className={classes.cardHeader}
                 title={value.title}
                 subheader={ConvertDateInText(value.published_date)}
             />
@@ -39,7 +36,7 @@ export const UolCardMobile = ({value}) => {
                 image={value.multimedia && value.multimedia[2].url}
                 title={value.title}
             />
-            <CardContent>
+            <CardContent className={classes.cardContent}>
                 <Typography variant="body2" color="textSecondary" component="p">
                     {value.byline}
                 </Typography>
@@ -60,7 +57,7 @@ export const UolCardMobile = ({value}) => {
                 </IconButton>
             </CardActions>
             <Collapse in={expanded} timeout="auto" unmountOnExit>
-                <CardContent>
+                <CardContent className={classes.cardContent}>
                     <Typography paragraph>Method:</Typography>
                     <Typography paragraph>
                         {value.abstract}

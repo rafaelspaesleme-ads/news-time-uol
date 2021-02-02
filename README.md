@@ -277,6 +277,7 @@ Portal para exibição de noticias do Jornal The New York Times.
 - Organização de serviços por separações de APIS: endpoints, objetos (funções por metodos Http) e autenticações;
 - Estilização global com SASS;
 - Estilização de componentes e containers com Styled Component;
+    - Para acessar a responsividade através do Styled Component, se faz necessario atualizar a pagina após a renderização;
 - Biblioteca principal de estilização Material UI;
 - Estilizações e layouts autonomos;
 - Separação de arquivos de estilização global em assets/styles;

@@ -7,6 +7,16 @@ export const useStyles = makeStyles((theme) => ({
         marginBottom: 20,
         marginTop: 20,
     },
+    cardHeader: {
+        '& span': {
+            fontSize: 12
+        }
+    },
+    cardContent: {
+        '& p': {
+            fontSize: 12
+        }
+    },
     media: {
         height: 0,
         paddingTop: '56.25%',
@@ -25,7 +35,10 @@ export const useStyles = makeStyles((theme) => ({
         backgroundColor: red[500],
     },
     tags: {
-        margin: 5
+        margin: 5,
+        '& span': {
+            fontSize: 12
+        }
     }
 }));
 
