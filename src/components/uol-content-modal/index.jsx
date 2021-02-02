@@ -52,12 +52,12 @@ UolContentModal.propTypes = {
 };
 
 UolContentModal.defaultProps = {
-    image: 'https://static01.nyt.com/images/2021/01/29/business/29musk-1/29musk-1-thumbStandard.jpg',
-    title: 'Sem Titulo',
-    author: 'Rafael S. Paes Leme',
-    tags: ['Facebook', 'Instagram', 'Elon Musk'],
-    description: 'Lorem ipsum bibendum torquent potenti cursus ante dolor id integer proin, aliquam ut fusce tincidunt donec ultricies hac dictumst neque.',
-    url: 'https://www.nytimes.com/2021/01/29/business/elon-musk-gamestop-twitter.html'
+    image: 'https://cdn.iconscout.com/icon/free/png-512/account-profile-avatar-man-circle-round-user-30452.png',
+    title: 'Untitled',
+    author: 'Without author',
+    tags: [],
+    description: 'No comments',
+    url: ''
 };
 
 export default UolContentModal;

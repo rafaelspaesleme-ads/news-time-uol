@@ -1,45 +1,309 @@
-# Getting Started with Create React App
+# Projeto News Time - UOL
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Portal para exibição de noticias do Jornal The New York Times.
 
-## Available Scripts
+## Tecnologias envolvidas
 
-In the project directory, you can run:
+- React Hooks
+- React Router Dom
+- Styled Component
+- SASS
+- CLSX
+- Axios
+- Material UI
+- Google Fonts
+- React Marquee Dwyer
 
-### `yarn start`
+## APIs utilizadas
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- <a href='https://developer.nytimes.com/' >Api NyTimes Developer</a>
+- <a href='https://documenter.getpostman.com/view/10808728/SzS8rjbc'>Api Covid 19</a>
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Componentes criados
 
-### `yarn test`
+- UolCardMobile
+    - Componente de Card para exibição de noticias de Ciências e Tecnologia em modo de responsividade;
+    - Propriedades deste componente:
+        <table>
+        <tr>
+        <th>PROPS</th>
+        <th>TYPE</th>
+        <th>DEFAULT</th>
+        </tr>
+        <tr>
+        <td>value</td>
+        <td>object</td>
+        <td>null</td>
+        </tr>
+        </table>
+        
+        
+- UolCardPrincipal
+    - Componente de Card para exibição de noticias de Ciências e Tecnologia em modo desktop
+    - Propriedades deste componente:
+        <table>
+        <tr>
+        <th>PROPS</th>
+        <th>TYPE</th>
+        <th>DEFAULT</th>
+        </tr>
+        <tr>
+        <td>value</td>
+        <td>object</td>
+        <td>null</td>
+        </tr>
+        </table>
+        
+        
+- UolCardSecondary
+    - Componente de Card para exibição de dados secundarios do portal (para preenchimento e adequação funcional do portal)
+    - Valido apenas para o modo Desktop
+    - Propriedades deste componente:
+        <table>
+        <tr>
+        <th>PROPS</th>
+        <th>TYPE</th>
+        <th>DEFAULT</th>
+        </tr>
+        <tr>
+        <td>title</td>
+        <td>string</td>
+        <td>There is no news</td>
+        </tr>
+        <tr>
+        <td>description</td>
+        <td>string</td>
+        <td>No comments</td>
+        </tr>
+        </table>
+        
+        
+- UolContentModal
+    - Componente para exibição de conteudos do modal
+    - Valido apenas para o modo Desktop
+    - Propriedaes deste componente:
+        <table>
+        <tr>
+        <th>PROPS</th>
+        <th>TYPE</th>
+        <th>DEFAULT</th>
+        </tr>
+        <tr>
+        <td>image</td>
+        <td>string</td>
+        <td><a href="https://cdn.iconscout.com/icon/free/png-512/account-profile-avatar-man-circle-round-user-30452.png">IconUsername</a></td>
+        </tr>
+        <tr>
+        <td>title</td>
+        <td>string</td>
+        <td>Untitled</td>
+        </tr>
+        <tr>
+        <td>author</td>
+        <td>string</td>
+        <td>Without author</td>
+        </tr>
+        <tr>
+        <td>tags</td>
+        <td>array</td>
+        <td>[ ]</td>
+        </tr>
+        <tr>
+        <td>description</td>
+        <td>string</td>
+        <td>No comments</td>
+        </tr>
+        <tr>
+        <td>url</td>
+        <td>string</td>
+        <td>empty</td>
+        </tr>
+        </table>
+        
+        
+- UolFooter
+    - Componente para exibição do rodapé da pagina
+    - Propriedaes deste componente:
+        <table>
+        <tr>
+        <th>PROPS</th>
+        <th>TYPE</th>
+        <th>DEFAULT</th>
+        </tr>
+        <tr>
+        <td>idDocs</td>
+        <td>string</td>
+        <td>empty</td>
+        </tr>
+        <tr>
+        <td>urlUsernameGithub</td>
+        <td>string</td>
+        <td>empty</td>
+        </tr>
+        <tr>
+        <td>urlUsernameInstagram</td>
+        <td>string</td>
+        <td>empty</td>
+        </tr>
+        <tr>
+        <td>urlUsernameLinkedin</td>
+        <td>string</td>
+        <td>empty</td>
+        </tr>
+        <tr>
+        <td>nameDev</td>
+        <td>string</td>
+        <td>empty</td>
+        </tr>
+        </table>
+        
+        
+- UolHeader
+    - Componente para exibição do cabeçalho da pagina
+    - Propriedaes deste componente:
+        <table>
+        <tr>
+        <th>PROPS</th>
+        <th>TYPE</th>
+        <th>DEFAULT</th>
+        </tr>
+        <tr>
+        <td>onClickTech</td>
+        <td>function</td>
+        <td>null</td>
+        </tr>
+        <tr>
+        <td>onClickScience</td>
+        <td>function</td>
+        <td>null</td>
+        </tr>
+        <tr>
+        <td>countNewsTech</td>
+        <td>number</td>
+        <td>0</td>
+        </tr>
+        <tr>
+        <td>countNewsScience</td>
+        <td>number</td>
+        <td>0</td>
+        </tr>
+        <tr>
+        <td>casesTotalCovid</td>
+        <td>number</td>
+        <td>0</td>
+        </tr>
+        <tr>
+        <td>casesNewsCovid</td>
+        <td>number</td>
+        <td>0</td>
+        </tr>
+        <tr>
+        <td>casesDeathCovid</td>
+        <td>number</td>
+        <td>0</td>
+        </tr>
+        <tr>
+        <td>casesRecoveredCovid</td>
+        <td>number</td>
+        <td>0</td>
+        </tr>
+        <tr>
+        <td>screen</td>
+        <td>selection</td>
+        <td>options["desktop", "smartphone", "tablet"]</td>
+        </tr>
+        </table>
+        
+        
+- UolMarquee
+    - Componente de marquee para exibição de noticias do dia
+    - Propriedades deste componente:
+        <table>
+        <tr>
+        <th>PROPS</th>
+        <th>TYPE</th>
+        <th>DEFAULT</th>
+        </tr>
+        <tr>
+        <td>info</td>
+        <td>array</td>
+        <td>[ ]</td>
+        </tr>
+        <tr>
+        <td>sequencyRandom</td>
+        <td>booleano</td>
+        <td>false</td>
+        </tr>
+        </table>
+        
+        
+- UolMobileNotification
+    - Componente de notificação em balão flutuante para alerta de covid 19 no modo de responsividade
+    - Propriedades deste componente:
+        <table>
+        <tr>
+        <th>PROPS</th>
+        <th>TYPE</th>
+        <th>DEFAULT</th>
+        </tr>
+        <tr>
+        <td>casesTotalCovid</td>
+        <td>number</td>
+        <td>0</td>
+        </tr>
+        <tr>
+        <td>casesNewsCovid</td>
+        <td>number</td>
+        <td>0</td>
+        </tr>
+        <tr>
+        <td>casesDeathCovid</td>
+        <td>number</td>
+        <td>0</td>
+        </tr>
+        <tr>
+        <td>casesRecoveredCovid</td>
+        <td>number</td>
+        <td>0</td>
+        </tr>
+        </table>
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `yarn build`
+## Formatação do projeto
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- Organização estrutural por componentização de funcionalidades;
+- Organização de componentes em containers (e subcontainers);
+- Organização de containers em paginas;
+- Organização de serviços por separações de APIS: endpoints, objetos (funções por metodos Http) e autenticações;
+- Estilização global com SASS;
+- Estilização de componentes e containers com Styled Component;
+- Biblioteca principal de estilização Material UI;
+- Estilizações e layouts autonomos;
+- Separação de arquivos de estilização global em assets/styles;
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Como executar e/ou buildar o projeto:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### `npm install ou yarn install`
+- Para baixar todas as dependencias utilizadas no projeto
 
-### `yarn eject`
+### `npm start ou yarn start`
+- Executa o aplicativo no modo de desenvolvimento.
+- Abra [http://localhost:3000](http://localhost:3000) para visualizá-lo no navegador.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+- A página será recarregada se você fizer edições.
+- Você também verá quaisquer erros de lint no console.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### `npm build ou yarn build`
+- Compila o aplicativo para produção na pasta `build`.
+- Ele agrupa corretamente o React no modo de produção e otimiza a construção para o melhor desempenho.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+- A compilação é reduzida e os nomes dos arquivos incluem os hashes.
+- Seu aplicativo está pronto para ser implantado!
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+- Consulte a seção sobre [deployment](https://facebook.github.io/create-react-app/docs/deployment) para obter mais informações.
 
-## Learn More
+
+## Informações uteis (en)
 
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 

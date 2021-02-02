@@ -25,8 +25,8 @@ UolCardSecondary.propTypes = {
 }
 
 UolCardSecondary.defaultProps = {
-    title: 'Não há notícia',
-    description: 'Lorem ipsum bibendum torquent potenti cursus ante dolor id integer proin, aliquam ut fusce tincidunt donec ultricies hac dictumst neque.',
+    title: 'There is no news',
+    description: 'No comments',
 }
 
 export default UolCardSecondary;

@@ -28,7 +28,8 @@ export const UolCardMobile = ({value}) => {
         <Card className={classes.card}>
             <CardHeader
                 avatar={
-                    <Avatar aria-label="recipe" src={value.multimedia && value.multimedia[1].url} className={classes.avatar} />
+                    <Avatar aria-label="recipe" src={value.multimedia && value.multimedia[1].url}
+                            className={classes.avatar}/>
                 }
                 title={value.title}
                 subheader={ConvertDateInText(value.published_date)}
@@ -45,7 +46,7 @@ export const UolCardMobile = ({value}) => {
             </CardContent>
             <CardActions disableSpacing>
                 <IconButton onClick={() => window.open(value.url, '_blank')} aria-label="access url">
-                    <OpenInNewIcon />
+                    <OpenInNewIcon/>
                 </IconButton>
                 <IconButton
                     className={clsx(classes.expand, {
@@ -55,7 +56,7 @@ export const UolCardMobile = ({value}) => {
                     aria-expanded={expanded}
                     aria-label="show more"
                 >
-                    <ExpandMoreIcon />
+                    <ExpandMoreIcon/>
                 </IconButton>
             </CardActions>
             <Collapse in={expanded} timeout="auto" unmountOnExit>

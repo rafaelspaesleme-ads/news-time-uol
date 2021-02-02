@@ -6,7 +6,7 @@ export const useStyles = makeStyles((theme) => ({
         borderTop: `2px solid ${Colors.grayLight}`,
         backgroundColor: Colors.gray,
         textAlign: 'center',
-        color: Colors.white,
+        color: `${Colors.white}`,
         fontSize: 14,
     },
     rowTop: {
