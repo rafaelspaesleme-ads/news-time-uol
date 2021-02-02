@@ -2,10 +2,8 @@ import React, {useState} from "react";
 import * as PropTypes from "prop-types";
 import useStyles from "./styles";
 import VisibilityIcon from '@material-ui/icons/Visibility';
-import {Box, Divider, IconButton} from "@material-ui/core";
-import Dialog from "@material-ui/core/Dialog";
+import {Box, Divider, IconButton, Modal} from "@material-ui/core";
 import UolContentModal from "../uol-content-modal";
-import Slide from "@material-ui/core/Slide";
 
 export const UolCardPrincipal = ({value}) => {
     const classes = useStyles();
@@ -17,12 +15,7 @@ export const UolCardPrincipal = ({value}) => {
 
     const handleClose = () => {
         setOpen(false);
-        window.location.reload();
     };
-
-    const Transition = React.forwardRef(function Transition(props, ref) {
-        return <Slide direction="up" ref={ref} {...props} />;
-    });
 
     return (
         <>
@@ -49,15 +42,11 @@ export const UolCardPrincipal = ({value}) => {
                 </div>
             </div>
             <Box as="center">
-                <Dialog
+                <Modal
                     open={open}
-                    TransitionComponent={Transition}
-                    keepMounted
                     onClose={handleClose}
-                    aria-labelledby="alert-dialog-slide-title"
-                    aria-describedby="alert-dialog-slide-description"
                 >
-                    <div>
+                    <div className={classes.modal}>
                         <UolContentModal
                             url={value.url}
                             image={value.multimedia && value.multimedia[1].url}
@@ -67,7 +56,7 @@ export const UolCardPrincipal = ({value}) => {
                             tags={value.des_facet}
                         />
                     </div>
-                </Dialog>
+                </Modal>
             </Box>
         </>
     );

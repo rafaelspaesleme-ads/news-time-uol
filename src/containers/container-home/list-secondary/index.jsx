@@ -61,7 +61,7 @@ export const ListSecondaryHome = ({icon, list, title, multipleList}) => {
                             ))
                             : (
                                 <Box component="center">
-                                    <p>Não há noticias sobre {title}</p>
+                                    <p>There is no news about {title}</p>
                                 </Box>
                             )
                     }

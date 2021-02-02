@@ -12,7 +12,7 @@ import Avatar from "@material-ui/core/Avatar";
 import CardHeader from "@material-ui/core/CardHeader";
 import clsx from "clsx";
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import {ConvertDateEngByPtBr} from "../../utils/functions/Convertions";
+import {ConvertDateInText} from "../../utils/functions/Convertions";
 import {Chip} from "@material-ui/core";
 import OpenInNewIcon from '@material-ui/icons/OpenInNew';
 
@@ -31,7 +31,7 @@ export const UolCardMobile = ({value}) => {
                     <Avatar aria-label="recipe" src={value.multimedia && value.multimedia[1].url} className={classes.avatar} />
                 }
                 title={value.title}
-                subheader={ConvertDateEngByPtBr(value.published_date)}
+                subheader={ConvertDateInText(value.published_date)}
             />
             <CardMedia
                 className={classes.media}

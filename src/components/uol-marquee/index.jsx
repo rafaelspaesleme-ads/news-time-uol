@@ -11,7 +11,6 @@ export const UolMarquee = ({info, sequencyRandom}) => {
             info.length > 0
                 ? (
                     <div className={classes.marquee}>
-                        {console.log('info', info)}
                         <Marquee
                             Size={'h5'}
                             NumberOfOptions={info.length}
@@ -34,7 +33,6 @@ export const UolMarquee = ({info, sequencyRandom}) => {
         </>
     );
 }
-
 
 UolMarquee.propTypes = {
     info: PropTypes.array,

@@ -20,12 +20,12 @@ export const ListPrincipalHome = ({list, typeList, screen}) => {
                             typeList === 'tech'
                                 ? (
                                     <>
-                                        <i>{'Tecnologia'}</i><span><ImportantDevicesIcon/></span>
+                                        <i>{'Tech'}</i><span><ImportantDevicesIcon/></span>
                                     </>
                                 )
                                 : (
                                     <>
-                                        <i>{'Ciências'}</i><span><EmojiObjectsIcon/></span>
+                                        <i>{'Sciense'}</i><span><EmojiObjectsIcon/></span>
                                     </>
                                 )
                         }
@@ -43,7 +43,7 @@ export const ListPrincipalHome = ({list, typeList, screen}) => {
                             : (
                                 <>
                                     <Box component={'center'}>
-                                        <h5>Não há noticias sobre {typeList === 'tech' ? 'Tecnologia' : 'Ciência'}</h5>
+                                        <h5>There is no news about {typeList === 'tech' ? 'Tech' : 'Science'}</h5>
                                     </Box>
                                 </>
                             )

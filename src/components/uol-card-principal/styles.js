@@ -27,7 +27,7 @@ export const useStyles = makeStyles((theme) => ({
     },
     areaText: {
         width: '100%',
-        height: 200,
+        height: 'auto',
         textAlign: 'justify',
         padding: 30,
         marginTop: 20,
@@ -39,11 +39,19 @@ export const useStyles = makeStyles((theme) => ({
         '& p': {
             marginTop: 15,
             color: Colors.grayLight
+        },
+        '& hr': {
+            marginTop: 10
         }
     },
     actions: {
         width: '100%',
         textAlign: 'center',
+    },
+    modal: {
+        backgroundColor: Colors.white,
+        transition: '0.2s',
+        margin: 100,
     }
 }));
 

@@ -3,18 +3,19 @@ import {Colors} from "../../assets/styles/js/colors";
 
 export const useStyles = makeStyles((theme) => ({
     modal: {
-        padding: 30
+        padding: 30,
+        display: 'grid'
     },
     rowTop: {
         width: '100%'
     },
     columnLeft: {
         float: 'left',
-        width: '20%'
+        width: '10%'
     },
     columnRight: {
         float: 'right',
-        width: '80%',
+        width: '90%',
         display: 'grid',
         textAlign: 'justify',
         marginBottom: 35,
@@ -32,7 +33,7 @@ export const useStyles = makeStyles((theme) => ({
     rowBottom: {
         width: '100%',
         '& p': {
-            padding: 20,
+            padding: '20px 0',
             display: 'inline-flex',
             textAlign: 'justify'
         }
@@ -41,7 +42,7 @@ export const useStyles = makeStyles((theme) => ({
         width: '100%',
         textAlign: 'justify',
         fontSize: 12,
-        padding: 20,
+        padding: '20px 0',
         '& span': {
             backgroundColor: Colors.purple,
             marginRight: 10,

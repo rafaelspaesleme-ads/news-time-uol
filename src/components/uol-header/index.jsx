@@ -1,6 +1,9 @@
 import React, {useEffect, useState} from "react";
 import useStyles from "./styles";
-import {ConvertDateNowInPtBrCustom, ConvertDesktopInMobile} from "../../utils/functions/Convertions";
+import {
+    ConvertDateNowInText,
+    ConvertDesktopInMobile
+} from "../../utils/functions/Convertions";
 import {Colors} from "../../assets/styles/js/colors";
 import * as PropTypes from "prop-types";
 
@@ -28,18 +31,18 @@ export const UolHeader = ({
         return (
             <div className={classes.columnLeft}>
                 <strong>
-                    {ConvertDateNowInPtBrCustom()}
+                    {ConvertDateNowInText()}
                 </strong>
                 {
                     stateResultNews
                         ? (
                             <label className={classes.labelCountNews}>
-                                ...e {countNewsTech} noticias sobre tecnologia.
+                                ...and {countNewsTech} technology news.
                             </label>
                         )
                         : (
                             <label className={classes.labelCountNews}>
-                                Hoje temos {countNewsScience} noticias sobre ciências...
+                                Today we have {countNewsScience} news about science...
                             </label>
                         )
                 }
@@ -51,14 +54,14 @@ export const UolHeader = ({
 
         return (
             <div className={classes.columnRight}>
-                <strong>Alerta de Coronavirus no Mundo</strong>
+                <strong>Coronavirus Alert in the World</strong>
                 <span className={classes.span}>
-                    <span><strong>Total de casos:</strong> <label
+                    <span><strong>Total cases:</strong> <label
                         style={{color: Colors.red}}>{casesTotalCovid}</label></span>
-                    <span><strong>Novos casos:</strong> <label
+                    <span><strong>New cases:</strong> <label
                         style={{color: Colors.red}}>{casesNewsCovid}</label></span>
-                    <span><strong>Mortos:</strong> <label style={{color: Colors.red}}>{casesDeathCovid}</label></span>
-                    <span><strong>Recuperados:</strong> <label
+                    <span><strong>Dead:</strong> <label style={{color: Colors.red}}>{casesDeathCovid}</label></span>
+                    <span><strong>Recovered:</strong> <label
                         style={{color: Colors.green}}>{casesRecoveredCovid}</label></span>
                 </span>
             </div>
@@ -73,8 +76,8 @@ export const UolHeader = ({
                     <h1>News Time - UOL</h1>
                 </div>
                 <div className={screen === "desktop" ? classes.rowBottom : classes.rowBottomMobile}>
-                    <label onClick={onClickTech} className={classes.labelLeft}>Tecnologia</label>
-                    <label onClick={onClickScience} className={classes.labelRight}>Ciências</label>
+                    <label onClick={onClickTech} className={classes.labelLeft}>Tech</label>
+                    <label onClick={onClickScience} className={classes.labelRight}>Science</label>
                 </div>
             </div>
             {screen === "desktop" ? <ViewDesktopRight /> : ""}

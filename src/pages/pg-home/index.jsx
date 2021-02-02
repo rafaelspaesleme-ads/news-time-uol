@@ -10,12 +10,10 @@ import {
 import UolHeader from "../../components/uol-header";
 import UolFooter from "../../components/uol-footer";
 import {ConvertDesktopInMobile} from "../../utils/functions/Convertions";
-import Fab from "@material-ui/core/Fab";
-import NotificationImportantIcon from '@material-ui/icons/NotificationImportant';
-import useStyles from "./styles";
+import UolMobileNotification from "../../components/uol-mobile-notification";
+import {Contacts} from "../../utils/constants/names/Contacts";
 
 export const Home = () => {
-    const classes = useStyles();
 
     const [casesTotalCovid, setCasesTotalCovid] = useState(0);
     const [casesNewsCovid, setCasesNewsCovid] = useState(0);
@@ -32,7 +30,6 @@ export const Home = () => {
     const [sports, setSports] = useState([]);
     const [politics, setPolitics] = useState([]);
     const [screen, setScreen] = useState(null);
-    const [actionCovid, setActionCovid] = useState(false);
 
     useEffect(() => {
         handleResultCovid();
@@ -44,7 +41,6 @@ export const Home = () => {
         handleWorld();
         handleSports();
         handlePolitics();
-        console.log(ConvertDesktopInMobile());
         setScreen(ConvertDesktopInMobile());
     }, []);
 
@@ -115,38 +111,6 @@ export const Home = () => {
             })
     }
 
-    const AlertCovidMobile = () => {
-
-        return (
-            <div style={casesTotalCovid > 0 ? null : {display: 'none'}} className={classes.alert}>
-                <div className={classes.box} style={!actionCovid ? {display: 'none'} : null}>
-                    <div>
-                        <label>Total de casos:</label>
-                        <span>{casesTotalCovid || 0}</span>
-                    </div>
-                    <div>
-                        <label>Novos casos:</label>
-                        <span>{casesNewsCovid || 0}</span>
-                    </div>
-                    <div>
-                        <label>Mortes:</label>
-                        <span>{casesDeathCovid || 0}</span>
-                    </div>
-                    <div className={classes.casesRecovered}>
-                        <label>Recuperações:</label>
-                        <span>{casesRecoveredCovid || 0}</span>
-                    </div>
-                </div>
-                <div className={classes.floatingBtn}>
-                    <Fab onClick={() => setActionCovid(!actionCovid)} color="secondary" variant="extended">
-                        <NotificationImportantIcon className={classes.extendedIcon}/>
-                        {actionCovid ? (<label>Alerta de Covid</label>) : null}
-                    </Fab>
-                </div>
-            </div>
-        )
-    }
-
     return (
         <>
             <UolHeader
@@ -171,8 +135,25 @@ export const Home = () => {
                 worlds={worlds}
                 screen={screen}
             />
-            {screen !== "desktop" ? <AlertCovidMobile/> : ''}
-            <UolFooter/>
+            {
+                screen !== "desktop"
+                    ? (
+                        <UolMobileNotification
+                            casesNewsCovid={casesNewsCovid}
+                            casesTotalCovid={casesTotalCovid}
+                            casesDeathCovid={casesDeathCovid}
+                            casesRecoveredCovid={casesDeathCovid}
+                        />
+                    )
+                    : ''
+            }
+            <UolFooter
+                idDocs={Contacts.ID_DOCS}
+                urlUsernameGithub={Contacts.URL_USER_GITHUB}
+                urlUsernameInstagram={Contacts.URL_USER_INSTAGRAM}
+                urlUsernameLinkedin={Contacts.URL_USER_LINKEDIN}
+                nameDev={Contacts.NAME_DEV}
+            />
         </>
     );
 }

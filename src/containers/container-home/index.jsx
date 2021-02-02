@@ -18,13 +18,13 @@ export const ContainerHome = ({copyright, typePrincipal, dailies, politics, spor
         return (
             <div className={classes.columnLeft}>
                 <ListSecondaryHome
-                    title="Política"
+                    title="Politics"
                     list={politics}
                     icon={<ApartmentIcon/>}
                     multipleList={true}
                 />
                 <ListSecondaryHome
-                    title="Esportes"
+                    title="Sports"
                     list={sports}
                     icon={<SportsHandballIcon/>}
                     multipleList={true}
@@ -38,7 +38,7 @@ export const ContainerHome = ({copyright, typePrincipal, dailies, politics, spor
         return (
             <div className={classes.columnRight}>
                 <ListSecondaryHome
-                    title="Mundo"
+                    title="World"
                     list={worlds}
                     icon={<PublicIcon/>}
                 />
@@ -46,7 +46,7 @@ export const ContainerHome = ({copyright, typePrincipal, dailies, politics, spor
         )
     }
 
-    const ViewmarqueeDesktop = () => {
+    const ViewMarqueeDesktop = () => {
 
         return (
             <div className={screen === "desktop" ? classes.rowTop : classes.rowTopMobile}>
@@ -59,9 +59,9 @@ export const ContainerHome = ({copyright, typePrincipal, dailies, politics, spor
 
     return (
         <Container className={screen !== "desktop" ? classes.root : null}>
-            {screen !== "desktop" ? <ViewmarqueeDesktop/> : ''}
+            {screen !== "desktop" ? <ViewMarqueeDesktop/> : ''}
             <div className={screen === "desktop" ? classes.home : classes.homeMobile}>
-                {screen === "desktop" ? <ViewmarqueeDesktop/> : ''}
+                {screen === "desktop" ? <ViewMarqueeDesktop/> : ''}
                 <div className={classes.rowCenter}>
                     {screen === "desktop" ? <ViewDesktopLeft/> : ''}
                     <div className={screen === "desktop" ? classes.columnCenter : classes.columnCenterMobile}>
@@ -73,7 +73,7 @@ export const ContainerHome = ({copyright, typePrincipal, dailies, politics, spor
                     {screen === "desktop" ? <ViewDesktopRight/> : ''}
                 </div>
                 <div className={classes.rowBottom}>
-                    <label>Direitos & Fonte:</label> <span>{copyright}</span>
+                    <label>Rights & Source:</label> <span>{copyright}</span>
                 </div>
             </div>
         </Container>
